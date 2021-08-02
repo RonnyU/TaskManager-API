@@ -35,7 +35,7 @@ exports.createTask = async (req, res) => {
 
 //get all projects by current user
 exports.getTasks = async (req, res) => {
-  const { project } = req.body;
+  const { project } = req.query;
 
   try {
     const projectFound = await Project.findById(project);
@@ -51,7 +51,7 @@ exports.getTasks = async (req, res) => {
     }
 
     //get taks by project
-    const tasks = await Task.find({ project });
+    const tasks = await Task.find({ project }).sort({ createdAt: -1 });
     res.json({ tasks });
   } catch (error) {
     console.log(error);
@@ -81,7 +81,7 @@ exports.updateTask = async (req, res) => {
 
     const newTask = {};
 
-    if (name) newTask.name = name;
+    newTask.name = name;
 
     newTask.status = status;
 
@@ -97,7 +97,7 @@ exports.updateTask = async (req, res) => {
 };
 
 exports.eliminarTask = async (req, res) => {
-  const { project } = req.body;
+  const { project } = req.query;
 
   try {
     let taskFound = await Task.findById(req.params.id);
