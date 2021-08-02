@@ -4,7 +4,8 @@
   "description": "API for the task manager",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "author": "Ronny Uriarte Lumbi",
   "license": "ISC",
