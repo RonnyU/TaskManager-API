@@ -21,6 +21,6 @@ app.use('/api/task', require('./routes/task'));
 
 app.listen(port, '0.0.0.0', () => {
   console.log(
-    `El servidor esta corriendo en el puerto http://localhost:${PORT}/`
+    `El servidor esta corriendo en el puerto http://localhost:${port}/`
   );
 });
